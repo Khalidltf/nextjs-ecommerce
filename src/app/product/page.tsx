@@ -35,13 +35,13 @@ const AddProduct = () => {
         <input
           type="text"
           name="name"
-          placeholder="Jacket"
+          placeholder="name"
           className="input-bordered input mb-3 w-full "
           required
         />
         <textarea
           name="description"
-          placeholder="Beautiful"
+          placeholder="description"
           className="textarea-bordered textarea  mb-3 w-full"
           required
         ></textarea>
@@ -55,7 +55,7 @@ const AddProduct = () => {
         <input
           type="number"
           name="price"
-          placeholder="$1119"
+          placeholder="price"
           className="input-bordered input mb-3 w-full"
           required
         />

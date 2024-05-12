@@ -3,8 +3,9 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import PriceTag from "@/components/PriceTag";
 import { cache } from "react";
-import { string } from "zod";
 import { Metadata } from "next";
+import AddToCartButton from "./AddtoCartButton";
+import incrementProductQuantity from "./actions";
 
 interface ProductPageInterface {
   params: {
@@ -19,7 +20,6 @@ const getProduct = cache(async (id: string) => {
   if (!product) notFound();
   return product;
 });
-
 
 //! it doesn't display the product's name ?
 export async function generateMetaData({
@@ -63,7 +63,10 @@ export default async function ProductPage({
           <h1 className="text-5xl font-bold">{name}</h1>
           <PriceTag price={price} className="mt-4" />
           <p className="py-6">{description}</p>
-
+          <AddToCartButton
+            productId={productId}
+            incrementProductQuantity={incrementProductQuantity}
+          />
           {/* <span className="justify-end">{createdAt.toDateString()}</span> */}
         </div>
       </div>

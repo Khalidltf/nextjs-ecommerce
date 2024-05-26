@@ -1,22 +1,20 @@
-import { prisma } from "@/lib/db/prisma";
-import { notFound } from "next/navigation";
-import Image from "next/image";
 import PriceTag from "@/components/PriceTag";
-import { cache } from "react";
+import { prisma } from "@/lib/db/prisma";
 import { Metadata } from "next";
+import Image from "next/image";
+import { notFound } from "next/navigation";
+import { cache } from "react";
 import AddToCartButton from "./AddtoCartButton";
-import incrementProductQuantity from "./actions";
+import { incrementProductQuantity } from "./actions";
 
 interface ProductPageInterface {
   params: {
-    id: "string";
+    id: string;
   };
 }
 
 const getProduct = cache(async (id: string) => {
-  const product = await prisma.product.findUnique({
-    where: { id },
-  });
+  const product = await prisma.product.findUnique({ where: { id } });
   if (!product) notFound();
   return product;
 });

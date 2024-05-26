@@ -19,8 +19,7 @@ const getProduct = cache(async (id: string) => {
   return product;
 });
 
-//! it doesn't display the product's name ?
-export async function generateMetaData({
+export async function generateMetadata({
   params: { id },
 }: ProductPageInterface): Promise<Metadata> {
   const { name, description, imageUrl } = await getProduct(id);
